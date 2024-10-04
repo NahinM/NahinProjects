@@ -76,6 +76,7 @@ int main(){
         }
         turn = !turn;
     }
+    cout << "Match draw!!\n"; 
 
     return 0;
 }
