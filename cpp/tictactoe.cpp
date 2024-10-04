@@ -72,7 +72,7 @@ int main(){
         printGrid();
         if(win()){
             cout << (turn?player1:player2) << " won\n";
-            break;
+            return 0;
         }
         turn = !turn;
     }
