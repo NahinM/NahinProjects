@@ -120,6 +120,7 @@ void tabel(string s){
 int main(){
     freopen("input.txt" , "r" , stdin);
     string s;
+// example:s = "(p&q)=(!(!p|!q))";
     cin >> s;
     clearRptv();
     for(char c:s) if('a' <= c && c <= 'z') if(!rptv[c -'a']) {
