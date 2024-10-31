@@ -52,8 +52,8 @@ string Number::operator-(Number &num2){
         neg = true;
     }
     result = "";
-    int p1 = num2.num.length()-1;
-    int p2 = num.length()-1;
+    int p1 = num.length()-1;
+    int p2 = num2.num.length()-1;
     int c = 0;
     result="";
     while (p1>=0 || p2>=0)
@@ -72,13 +72,10 @@ string Number::operator-(Number &num2){
 }
 
 int main(){
-    // freopen("input.txt","r",stdin);
+    freopen("input.txt","r",stdin);
     int base;
     string s1,s2;
-    // cin  >> base >> s1 >> s2;
-    base = 16;
-    s1 = "AA";
-    s2 = "11";
+    cin  >> base >> s1 >> s2;
     Number n1 = Number(s1,base);
     Number n2 = Number(s2,base);
     cout << n1 - n2;br;
