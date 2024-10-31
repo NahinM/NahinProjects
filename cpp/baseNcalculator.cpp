@@ -72,11 +72,15 @@ string Number::operator-(Number &num2){
 }
 
 int main(){
-    freopen("input.txt","r",stdin);
+    // freopen("input.txt","r",stdin);
     int base;
     string s1,s2;
-    cin  >> base >> s1 >> s2;
+    // cin  >> base >> s1 >> s2;
+    base = 16;
+    s1 = AA;
+    s2 = 11;
     Number n1 = Number(s1,base);
     Number n2 = Number(s2,base);
     cout << n1 - n2;br;
+    cout << n1 + n2;br;
 }
