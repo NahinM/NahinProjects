@@ -2,12 +2,13 @@
 #include <vector>
 using namespace std;
 
+#define ll long long
 
-int limit = 1000;
-vector<int> primeList;
+ll limit = 1000;
+vector<ll> primeList;
 
 
-bool prime(int n){
+bool prime(ll n){
     if(n<3) return false;
     for(int i:primeList){
         if(n%i==0){
@@ -18,18 +19,18 @@ bool prime(int n){
     return true;
 }
 
-int nextPrime(){
+ll nextPrime(){
     if(primeList.empty()){
         primeList.push_back(2);
         return 2;
     }
-    for(int i=primeList.back()+1;i<=limit;i++){
+    for(ll i=primeList.back()+1;i<=limit;i++){
         if(prime(i)) return primeList.back();
     }
     return -1;
 }
 
-string factor(int number){
+string factor(ll number){
     int d,n;
     string result = "";
     while(number != 1){
@@ -39,17 +40,19 @@ string factor(int number){
             n = 0;
             while(number%d==0){
                 number = number/d;
+                limit = number;
                 n++;
             }
             result += to_string(d)+"^(" + to_string(n) + ')';
-            if(number!=1) result+=" + ";
+            if(number!=1) result+=" * ";
         }
     }
     return result;
 }
 
 int main(){
-    int number;
+    ll number;
     cin >> number;
+    limit = number;
     cout << factor(number) << '\n';
 }
