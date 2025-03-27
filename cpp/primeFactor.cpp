@@ -1,58 +1,28 @@
-#include <iostream>
+#include <stdio.h>
 #include <vector>
 using namespace std;
 
 #define ll long long
+#define pii pair<int,int>
+#define vpii vector<pii>
+#define br printf("\n")
 
-ll limit = 1000;
-vector<ll> primeList;
-
-
-bool prime(ll n){
-    if(n<3) return false;
-    for(int i:primeList){
-        if(n%i==0){
-            return false;
+vpii primeFactor(ll n){
+    vpii pf;
+    for(int i=2; i<=n; i++){
+        int total = 0;
+        while (n%i==0) {
+            n/=i;
+            total++;
         }
+        if(total!=0) pf.push_back({i,total});
     }
-    primeList.push_back(n);
-    return true;
-}
-
-ll nextPrime(){
-    if(primeList.empty()){
-        primeList.push_back(2);
-        return 2;
-    }
-    for(ll i=primeList.back()+1;i<=limit;i++){
-        if(prime(i)) return primeList.back();
-    }
-    return -1;
-}
-
-string factor(ll number){
-    int d,n;
-    string result = "";
-    while(number != 1){
-        d = nextPrime();
-
-        if(number%d==0){
-            n = 0;
-            while(number%d==0){
-                number = number/d;
-                limit = number;
-                n++;
-            }
-            result += to_string(d)+"^(" + to_string(n) + ')';
-            if(number!=1) result+=" * ";
-        }
-    }
-    return result;
+    return pf;
 }
 
 int main(){
-    ll number;
-    cin >> number;
-    limit = number;
-    cout << factor(number) << '\n';
+    ll n;
+    scanf("%lld",&n);
+    vpii pf = primeFactor(n);
+    for(pii p:pf) printf("%d^(%d) %c ",p.first,p.second,(pf.back()!=p?'+':' ')); br;
 }
